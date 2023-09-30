@@ -1,7 +1,11 @@
 import { createPool } from '@vercel/postgres';
 import { sql } from '@vercel/postgres';
 
-async function seed(db: any) {
+async function seed() {
+	await sql`DROP TABLE IF EXISTS tags`;
+	await sql`DROP TABLE IF EXISTS users`;
+	await sql`DROP TABLE IF EXISTS articles`;
+
 	const createTableUsers = await sql`
     CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,
@@ -11,7 +15,7 @@ async function seed(db: any) {
       "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
     );
     `;
-	const createTableArticles = await sql`
+	await sql`
 	CREATE TABLE IF NOT EXISTS articles (
 		id SERIAL PRIMARY KEY,
 		title VARCHAR(255) NOT NULL,
@@ -19,18 +23,13 @@ async function seed(db: any) {
 		date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 		tags JSON
 	  );`;
-	const createTableTags = await sql`
+	await sql`
 	  CREATE TABLE IF NOT EXISTS tags (
 		id SERIAL PRIMARY KEY,
 		name VARCHAR(255) NOT NULL,
 		icon VARCHAR(255) NOT NULL
 	  );`;
 	console.log(`Created "users, articles, tags" table`);
-	// if exists -> bool false run script users
-
-	await sql`TRUNCATE TABLE users`;
-	await sql`TRUNCATE TABLE articles`;
-	await sql`TRUNCATE TABLE tags`;
 
 	const users = await Promise.all([
 		sql`
@@ -58,18 +57,12 @@ async function seed(db: any) {
 	]);
 	console.log(`Added articles`);
 
-	const { rows: tags } = await db.query('SELECT * FROM tags');
-	console.log(`tags:${JSON.stringify(tags)}`)
-
-	const womenTags = tags.filter(row => row.name === 'women');
-	const pollTags = tags.filter(row => row.name === 'poll');
-
 	 console.log('test2222');
 	const articles = await Promise.all([
 		sql`INSERT INTO articles (title, content, tags)
         VALUES($$Without women, you won't win these elections$$, $$On Thursday, a new podcast hosted by Arleta Zalewska from 'Fakty' TVN and Aleksandra Pawlicka from 'Newsweek' premiered, titled 'Women's Choices.'
          The next day, on TVN24, the journalists talked about their new project and also commented on the ongoing election campaign. - Women have finally been noticed - Pawlicka noted. - I have no doubt: without women, you won't win these elections - emphasized Zalewska.$$,
-         '1')
+         '[1]')
          `,
 		sql`INSERT INTO articles (title, content, tags)
         VALUES($$Latest Election Polls - Who Will Be the Third Force in the Parliament?$$,
@@ -90,7 +83,7 @@ export async function load() {
 	const startTime = Date.now();
 
 	try {
-		await seed(db);
+		await seed();
 		const { rows: users } = await db.query('SELECT * FROM users');
 		
 		const duration = Date.now() - startTime;
