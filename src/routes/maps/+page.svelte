@@ -17,9 +17,17 @@
 			zoom: initialState.zoom
 		});
 
-		const marker = new maptilersdk.Marker()
+		new maptilersdk.Marker()
 			.setLngLat([15.5061862, 51.9356214])
 			.setPopup(new maptilersdk.Popup().setHTML('Election commission No ZG_20902/23'))
+			.addTo(map);
+		new maptilersdk.Marker()
+			.setLngLat([15.5051862, 51.9446214])
+			.setPopup(new maptilersdk.Popup().setHTML('Election commission No ZG_20902/22'))
+			.addTo(map);
+		new maptilersdk.Marker()
+			.setLngLat([15.5211862, 51.9446214])
+			.setPopup(new maptilersdk.Popup().setHTML('Election commission No ZG_20902/21'))
 			.addTo(map);
 	});
 </script>
