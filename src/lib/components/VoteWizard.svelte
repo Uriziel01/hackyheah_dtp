@@ -54,8 +54,6 @@
 	function answeredYes() {
 		validateRoute(wizardQuestion.routeYes);
 		if (!wizardEnded) {
-			console.log(wizardQuestion.routeYes);
-
 			wizardQuestion = votingWizard.filter((q) => {
 				return q.id === wizardQuestion.routeYes;
 			})[0];
