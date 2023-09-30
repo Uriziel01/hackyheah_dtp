@@ -61,21 +61,22 @@ async function seed(db: any) {
 	const { rows: tags } = await db.query('SELECT * FROM tags');
 	console.log(`tags:${JSON.stringify(tags)}`)
 
-	const womenTag = tags.find((t) => t.rows[0].name === 'women');
-	const pollTag = tags.find((t) => t.rows[0].name === 'poll');
+	const womenTags = tags.filter(row => row.name === 'women');
+	const pollTags = tags.filter(row => row.name === 'poll');
 
+	 console.log('test2222');
 	const articles = await Promise.all([
 		sql`INSERT INTO articles (title, content, tags)
         VALUES($$Without women, you won't win these elections$$, $$On Thursday, a new podcast hosted by Arleta Zalewska from 'Fakty' TVN and Aleksandra Pawlicka from 'Newsweek' premiered, titled 'Women's Choices.'
          The next day, on TVN24, the journalists talked about their new project and also commented on the ongoing election campaign. - Women have finally been noticed - Pawlicka noted. - I have no doubt: without women, you won't win these elections - emphasized Zalewska.$$,
-         '[${JSON.stringify(womenTag)}]')
+         '1')
          `,
 		sql`INSERT INTO articles (title, content, tags)
         VALUES($$Latest Election Polls - Who Will Be the Third Force in the Parliament?$$,
         $$The latest poll in our compilation is the IBRiS survey for the Onet portal, the results of which were presented on Friday, September 29. Below it, we are publishing further opinion surveys before the October parliamentary elections - both new ones and earlier ones.
         In our compilation, we present the latest results of party preference surveys during the hottest period of the campaign for the Sejm (lower house of parliament) and the Senate. The list is updated with emerging poll results. We present them in the order of publication - the newest ones on top. What do they show? That two weeks before the start of the election silence, we cannot be sure who will govern Poland after October 15.
         A particularly fierce battle is taking place for the third place on the poll podium.$$,
-        JSON '[${JSON.stringify(pollTag)}]')`
+        '2')`
 	]);
 	console.log(`Added ${articles.length} articles`);
 
