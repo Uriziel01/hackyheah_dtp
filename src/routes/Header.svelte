@@ -17,7 +17,7 @@
 			</li>
 			<li class="nav-item">
 			  <!-- svelte-ignore a11y-invalid-attribute -->
-			  <a class="nav-link no-outline text-white" href="#">Features</a>
+			  <a class="nav-link no-outline text-white" href="/maps">Maps</a>
 			</li>
     	    <li class="nav-item dropdown">
 			  	<!-- svelte-ignore a11y-invalid-attribute -->
