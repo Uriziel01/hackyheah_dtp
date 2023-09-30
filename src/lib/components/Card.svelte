@@ -1,18 +1,27 @@
 
 <script>
+    import Avatar from "./Avatar.svelte"
+
     export let imageUrl = 'http://placekitten.com/g/200/300';
     export let title = 'Card Title';
     export let description = 'This is some content inside the card';
 
+    const colors = [
+        '#9d789b',
+        '#7a81a8',
+        '#6d5b98',
+        '#1d6d86',
+        '#a0a1a1',
+        '#afafae',
+        '#4f5051',
+        '#00a7a2',
+        '#bcbcbd',
+        '#79787a'
+    ];
+
   // Function to generate a random background color
   function getRandomBackgroundColor() {
-    // TODO: add list of colors user friendly
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+    return colors[Math.floor(Math.random() * colors.length)];
   }
 
   // Generate a random background color
@@ -23,19 +32,19 @@
     {#if imageUrl}
         <div class="card-up" style="background-color: {backgroundColor};"></div>
         <div class="avatar mx-auto bg-white">
-            <img src={imageUrl} class="rounded-circle" alt="Card Image" width="110" height="110" />
+            <Avatar imageUrl={imageUrl} imageName="Card Image" imageWidth=110 imageHeight=110 />
         </div>
     {/if}
     <div class="card-body">
         {#if title}
-        <h5 class="card-title">{title}</h5>
+            <h5 class="card-title">{title}</h5>
         {/if}
         {#if description}
-        <hr>
-        <p class="card-text">
-            <i class="fas fa-quote-left pe-2" />
-            {description}
-        </p>
+            <hr>
+            <p class="card-text">
+                <i class="fas fa-quote-left pe-2" />
+                {description}
+            </p>
         {/if}
     </div>
  </div>
