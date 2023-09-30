@@ -1,6 +1,6 @@
 <script>
 	import Table from '../../lib/Table.svelte'
-	export let data
+	export let data../postgres/$types.js
   </script>
   
   <main
@@ -40,15 +40,6 @@
 	  </div>
 	</div>
 	<div class="flex flex-col items-center grow">
-	  <a href="https://vercel.com">
-		<img
-		  src="/vercel.svg"
-		  alt="Vercel Logo"
-		  class="h-4 my-4 dark:invert"
-		  width={100}
-		  height={24}
-		/>
-	  </a>
 	  <a
 		href="https://github.com/vercel/examples/tree/main/storage/postgres-sveltekit"
 		class="flex items-center h-8 mt-auto space-x-2 bottom-20 right-20"
