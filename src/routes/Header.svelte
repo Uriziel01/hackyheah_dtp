@@ -13,11 +13,15 @@
 		  <ul class="navbar-nav">
 			<li class="nav-item">
 			  <!-- svelte-ignore a11y-invalid-attribute -->
-			  <a class="nav-link active no-outline text-white" aria-current="page" href="#">Home</a>
+			  <a class="nav-link active no-outline text-white" aria-current="page" href="/">Home</a>
 			</li>
 			<li class="nav-item">
 			  <!-- svelte-ignore a11y-invalid-attribute -->
 			  <a class="nav-link no-outline text-white" href="/maps">Maps</a>
+			</li>
+			<li class="nav-item">
+			  <!-- svelte-ignore a11y-invalid-attribute -->
+			  <a class="nav-link no-outline text-white" href="/calendar">Meeting calendar</a>
 			</li>
     	    <li class="nav-item dropdown">
 			  	<!-- svelte-ignore a11y-invalid-attribute -->
