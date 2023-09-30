@@ -1,8 +1,8 @@
 import { createPool } from '@vercel/postgres';
 import { sql } from '@vercel/postgres';
 
-async function seed() {
-	const createTable = await sql`
+async function seed(db: any) {
+	const createTableUsers = await sql`
     CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
@@ -10,27 +10,27 @@ async function seed() {
       image VARCHAR(255),
       "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
     );
-    CREATE TABLE IF NOT EXISTS articles (
-      id SERIAL PRIMARY KEY,
-      title VARCHAR(255) NOT NULL,
-      content TEXT,
-      date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-      tags JSON
-    );
-    CREATE TABLE IF NOT EXISTS tags (
-      id SERIAL PRIMARY KEY,
-      name VARCHAR(255) NOT NULL,
-      icon VARCHAR(255) NOT NULL,
-    );
-
     `;
-
+	const createTableArticles = await sql`
+	CREATE TABLE IF NOT EXISTS articles (
+		id SERIAL PRIMARY KEY,
+		title VARCHAR(255) NOT NULL,
+		content TEXT,
+		date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+		tags JSON
+	  );`;
+	const createTableTags = await sql`
+	  CREATE TABLE IF NOT EXISTS tags (
+		id SERIAL PRIMARY KEY,
+		name VARCHAR(255) NOT NULL,
+		icon VARCHAR(255) NOT NULL
+	  );`;
 	console.log(`Created "users, articles, tags" table`);
 	// if exists -> bool false run script users
 
-	await sql`DELETE FROM users`;
-	await sql`DELETE FROM articles`;
-	await sql`DELETE FROM tags`;
+	await sql`TRUNCATE TABLE users`;
+	await sql`TRUNCATE TABLE articles`;
+	await sql`TRUNCATE TABLE tags`;
 
 	const users = await Promise.all([
 		sql`
@@ -50,37 +50,37 @@ async function seed() {
       `
 	]);
 	console.log(`Seeded ${users.length} users`);
-	const tags = await Promise.all([
+	await Promise.all([
 		sql`INSERT INTO tags(name, icon)
          VALUES('women', 'fa-venus')`,
 		sql`INSERT INTO tags(name, icon)
          VALUES('poll', 'fa-square-poll-vertical')`
 	]);
-	console.log(`Added ${tags.length} articles`);
+	console.log(`Added articles`);
+
+	const { rows: tags } = await db.query('SELECT * FROM tags');
+	console.log(`tags:${JSON.stringify(tags)}`)
 
 	const womenTag = tags.find((t) => t.rows[0].name === 'women');
 	const pollTag = tags.find((t) => t.rows[0].name === 'poll');
 
 	const articles = await Promise.all([
 		sql`INSERT INTO articles (title, content, tags)
-        VALUES('Without women, you won't win these elections', 'On Thursday, a new podcast hosted by Arleta Zalewska from 'Fakty' TVN and Aleksandra Pawlicka from 'Newsweek' premiered, titled 'Women's Choices.'
-         The next day, on TVN24, the journalists talked about their new project and also commented on the ongoing election campaign. - Women have finally been noticed - Pawlicka noted. - I have no doubt: without women, you won't win these elections - emphasized Zalewska.',
-         JSON '[${JSON.stringify(womenTag)}]')
+        VALUES($$Without women, you won't win these elections$$, $$On Thursday, a new podcast hosted by Arleta Zalewska from 'Fakty' TVN and Aleksandra Pawlicka from 'Newsweek' premiered, titled 'Women's Choices.'
+         The next day, on TVN24, the journalists talked about their new project and also commented on the ongoing election campaign. - Women have finally been noticed - Pawlicka noted. - I have no doubt: without women, you won't win these elections - emphasized Zalewska.$$,
+         '[${JSON.stringify(womenTag)}]')
          `,
 		sql`INSERT INTO articles (title, content, tags)
-        VALUES('Latest Election Polls - Who Will Be the Third Force in the Parliament?',
-        'The latest poll in our compilation is the IBRiS survey for the Onet portal, the results of which were presented on Friday, September 29. Below it, we are publishing further opinion surveys before the October parliamentary elections - both new ones and earlier ones.
+        VALUES($$Latest Election Polls - Who Will Be the Third Force in the Parliament?$$,
+        $$The latest poll in our compilation is the IBRiS survey for the Onet portal, the results of which were presented on Friday, September 29. Below it, we are publishing further opinion surveys before the October parliamentary elections - both new ones and earlier ones.
         In our compilation, we present the latest results of party preference surveys during the hottest period of the campaign for the Sejm (lower house of parliament) and the Senate. The list is updated with emerging poll results. We present them in the order of publication - the newest ones on top. What do they show? That two weeks before the start of the election silence, we cannot be sure who will govern Poland after October 15.
-        A particularly fierce battle is taking place for the third place on the poll podium.',
-        JSON '[${JSON.stringify(pollTag)}]'))`
+        A particularly fierce battle is taking place for the third place on the poll podium.$$,
+        JSON '[${JSON.stringify(pollTag)}]')`
 	]);
 	console.log(`Added ${articles.length} articles`);
 
 	return {
-		createTable,
-		users,
-		articles,
-		tags
+		createTableUsers
 	};
 }
 
@@ -89,7 +89,9 @@ export async function load() {
 	const startTime = Date.now();
 
 	try {
+		await seed(db);
 		const { rows: users } = await db.query('SELECT * FROM users');
+		
 		const duration = Date.now() - startTime;
 		return {
 			users: users,
@@ -99,7 +101,6 @@ export async function load() {
 		if (error?.message === `relation "users" does not exist`) {
 			console.log('Table does not exist, creating and seeding it with dummy data now...');
 			// Table is not created yet
-			await seed();
 			const { rows: users } = await db.query('SELECT * FROM users');
 			const duration = Date.now() - startTime;
 			return {
