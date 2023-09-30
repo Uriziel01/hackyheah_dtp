@@ -37,6 +37,8 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.4.2",
     "@vercel/blob": "^0.13.0",
-    "@vercel/postgres": "^0.5.0"
+    "@vercel/postgres": "^0.5.0",
+    "svelte-local-storage-store": "^0.6.0",
+    "uuid": "^9.0.1"
   }
 }
