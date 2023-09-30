@@ -23,6 +23,10 @@
 			  <!-- svelte-ignore a11y-invalid-attribute -->
 			  <a class="nav-link no-outline text-white" href="/calendar">Meeting calendar</a>
 			</li>
+			<li class="nav-item">
+			  <!-- svelte-ignore a11y-invalid-attribute -->
+			  <a class="nav-link no-outline text-white" href="/quiz">Quiz</a>
+			</li>
     	    <li class="nav-item dropdown">
 			  	<!-- svelte-ignore a11y-invalid-attribute -->
 				<a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
