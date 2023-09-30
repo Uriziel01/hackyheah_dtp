@@ -93,8 +93,6 @@
 				});
 			});
 		});
-
-		console.log(partiesResultsArray);
 	}
 
 	randomisePartiesAnswer();
