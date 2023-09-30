@@ -25,15 +25,15 @@
 			</li>
 			<li class="nav-item">
 			  <!-- svelte-ignore a11y-invalid-attribute -->
-			  <a class="nav-link {activeLink === 'maps' ? 'active' : ''} no-outline text-white" on:click={() => setActive('maps')} href="/">Maps</a>
+			  <a class="nav-link {activeLink === 'maps' ? 'active' : ''} no-outline text-white" on:click={() => setActive('maps')} href="/maps">Maps</a>
 			</li>
 			<li class="nav-item">
 			  <!-- svelte-ignore a11y-invalid-attribute -->
-			  <a class="nav-link {activeLink === 'calendar' ? 'active' : ''} no-outline text-white" on:click={() => setActive('calendar')} href="/">Meeting Calendar</a>
+			  <a class="nav-link {activeLink === 'calendar' ? 'active' : ''} no-outline text-white" on:click={() => setActive('calendar')} href="/calendar">Meeting Calendar</a>
 			</li>
 			<li class="nav-item">
 			  <!-- svelte-ignore a11y-invalid-attribute -->
-			  <a class="nav-link {activeLink === 'quiz' ? 'active' : ''} no-outline text-white" on:click={() => setActive('quiz')} href="/">Quiz</a>
+			  <a class="nav-link {activeLink === 'quiz' ? 'active' : ''} no-outline text-white" on:click={() => setActive('quiz')} href="/quiz">Quiz</a>
 			</li>
 			<li class="nav-item">
 			  <!-- svelte-ignore a11y-invalid-attribute -->
