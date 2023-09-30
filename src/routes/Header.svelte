@@ -31,8 +31,7 @@
 				</ul>
 			</li>
 			<li class="nav-item">
-			  <!-- svelte-ignore a11y-invalid-attribute -->
-			  <a class="nav-link no-outline text-white" href="#">Pricing</a>
+			  <a class="nav-link no-outline text-white" href="/voting">Voting</a>
 			</li>
 			<li class="nav-item dropdown">
 			  <!-- svelte-ignore a11y-invalid-attribute -->
