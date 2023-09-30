@@ -23,19 +23,25 @@ async function seed() {
 		content TEXT,
 		date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 		tags JSON
-	  );`;
+	);`;
 	await sql`
-	  CREATE TABLE IF NOT EXISTS tags (
+	CREATE TABLE IF NOT EXISTS tags (
 		id SERIAL PRIMARY KEY,
 		name VARCHAR(255) NOT NULL,
 		icon VARCHAR(255) NOT NULL
-	  );`;
+	);`;
 	await sql`	
-	  CREATE TABLE IF NOT EXISTS questions (
+	CREATE TABLE IF NOT EXISTS questions (
 		id SERIAL PRIMARY KEY,
 		text VARCHAR(255) NOT NULL
-	  );`;  
-	console.log(`Created "users, articles, tags, questions" table`);
+	);`;  
+	await sql`
+	CREATE TABLE IF NOT EXISTS parties (
+		id SERIAL PRIMARY KEY,
+		name VARCHAR(255) NOT NULL,
+		logo VARCHAR(255) NOT NULL
+	);`;
+	console.log(`Created "users, articles, tags, questions, parties" table`);
 
 	const users = await Promise.all([
 		sql`
@@ -118,6 +124,26 @@ async function seed() {
 		  `,
 	  ]);
 	  console.log(`Added ${questions.length} questions`);
+
+	  const parties = await Promise.all([
+		sql`
+			INSERT INTO parties (name, logo)
+			VALUES ('Pizza Friends', '$lib/images/logo1.jpg');
+		  `,
+		sql`
+			INSERT INTO parties (name, logo)
+			VALUES ('Promise And Conquer', '$lib/images/logo2.jpg');
+		  `,
+		sql`
+			INSERT INTO parties (name, logo)
+			VALUES ('Do Whatever You Want', '$lib/images/logo3.jpg');
+		  `,
+		sql`
+			INSERT INTO parties (name, logo)
+			VALUES ('We Are The Champions', '$lib/images/logo4.jpg');
+		  `,
+		]);
+		console.log(`Added ${parties.length} parties`);
 
 	return {
 		createTables
