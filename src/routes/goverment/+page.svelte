@@ -42,7 +42,7 @@
 	<div class="row">
 		<div class="col-4">
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item fw-bold" >Categories</li>
+				<li class="list-group-item fw-bold">Categories</li>
 				<li class="list-group-item">Other income 125.9 billion</li>
 				<li class="list-group-item">Labor taxes 415.8 billion</li>
 				<li class="list-group-item">PIT according to the tax scale 83.8 billion</li>
@@ -56,4 +56,15 @@
 			<img src={income_map} alt="Polish government income map in 2021" />
 		</div>
 	</div>
+</div>
+
+<div class="mt-5">
+	<h2>Statistics</h2>
+</div>
+
+<div class="progress" style="height: 20px;">
+	<div class="progress-bar" role="progressbar" style="width: 53%">Expenses 53%</div>
+</div>
+<div class="progress" style="height: 20px;">
+	<div class="progress-bar bg-success" role="progressbar" style="width: 47%">Incomes 47%</div>
 </div>
