@@ -93,8 +93,6 @@
 				(!lgtb || candidate.lgtb === lgtb)
 			);
 		});
-
-		console.log(selectedCandidates);
 	}
 
 	let selectedCandidates = partyCandidates;

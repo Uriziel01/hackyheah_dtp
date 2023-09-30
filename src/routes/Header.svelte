@@ -37,7 +37,7 @@
 			</li>
 			<li class="nav-item">
 			  <!-- svelte-ignore a11y-invalid-attribute -->
-			  <a class="nav-link no-outline text-white" href="/voter_helper">Candidates</a>
+			  <a class="nav-link {activeLink === 'voter_helper' ? 'active' : ''} no-outline text-white" on:click={() => setActive('voter_helper')} href="/voter_helper">Candidates</a>
 			</li>
     	    <li class="nav-item dropdown">
 			  	<!-- svelte-ignore a11y-invalid-attribute -->
