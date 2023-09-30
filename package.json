@@ -12,6 +12,9 @@
     "format": "prettier --plugin-search-dir . --write ."
   },
   "devDependencies": {
+    "@event-calendar/core": "^2.3.3",
+    "@event-calendar/day-grid": "^2.3.3",
+    "@event-calendar/time-grid": "^2.3.3",
     "@fontsource/fira-mono": "^4.5.10",
     "@neoconfetti/svelte": "^1.0.0",
     "@popperjs/core": "^2.11.8",
