@@ -5,8 +5,9 @@ async function seed() {
 	await sql`DROP TABLE IF EXISTS tags`;
 	await sql`DROP TABLE IF EXISTS users`;
 	await sql`DROP TABLE IF EXISTS articles`;
+	await sql`DROP TABLE IF EXISTS questions`;
 
-	const createTableUsers = await sql`
+	const createTables = await sql`
     CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
@@ -29,7 +30,12 @@ async function seed() {
 		name VARCHAR(255) NOT NULL,
 		icon VARCHAR(255) NOT NULL
 	  );`;
-	console.log(`Created "users, articles, tags" table`);
+	await sql`	
+	  CREATE TABLE IF NOT EXISTS questions (
+		id SERIAL PRIMARY KEY,
+		text VARCHAR(255) NOT NULL
+	  );`;  
+	console.log(`Created "users, articles, tags, questions" table`);
 
 	const users = await Promise.all([
 		sql`
@@ -73,8 +79,48 @@ async function seed() {
 	]);
 	console.log(`Added ${articles.length} articles`);
 
+	const questions = await Promise.all([
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('Oppression by corporations is more of a concern than oppression by governments.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('It is necessary for the government to intervene in the economy to protect consumers.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('The freer the markets, the freer the people.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('It is better to maintain a balanced budget than to ensure welfare for all citizens.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('Publicly-funded research is more beneficial to the people than leaving it to the market.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('Tariffs on international trade are important to encourage local production.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('From each according to his ability, to each according to his needs.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('It would be best if social programs were abolished in favor of private charity.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('Taxes should be increased on the rich to provide for the poor.');
+		  `,
+	  ]);
+	  console.log(`Added ${questions.length} questions`);
+
 	return {
-		createTableUsers
+		createTables
 	};
 }
 
