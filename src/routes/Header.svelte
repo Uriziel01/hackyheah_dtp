@@ -19,6 +19,17 @@
 			  <!-- svelte-ignore a11y-invalid-attribute -->
 			  <a class="nav-link no-outline text-white" href="#">Features</a>
 			</li>
+    	    <li class="nav-item dropdown">
+			  	<!-- svelte-ignore a11y-invalid-attribute -->
+				<a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					Electoral process
+				</a>
+				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<li><a class="dropdown-item" href="/democracy">Democracy</a></li>
+					<li><a class="dropdown-item" href="/elections">Elections</a></li>
+					<li><a class="dropdown-item" href="/goverment">Goverment</a></li>
+				</ul>
+			</li>
 			<li class="nav-item">
 			  <!-- svelte-ignore a11y-invalid-attribute -->
 			  <a class="nav-link no-outline text-white" href="#">Pricing</a>
