@@ -13,6 +13,12 @@ HACKYEAH 2023
 
 # Installation guide
 
-1. Install **WSL 2**
+1. Install **WSL 2** - **(Ubuntu 22LTS)**
 2. Install **bun**, command `curl -fsSL https://bun.sh/install | bash`
 3. Install **node** version greater than 16, prefer 18 on WSL
+
+# Running the app (FROM INSIDE OF UBUNTU IN WSL2)
+
+1. cd hackyeah_dtp
+2. npm install (or pnpm install, etc)
+3. npm run dev -- --open
