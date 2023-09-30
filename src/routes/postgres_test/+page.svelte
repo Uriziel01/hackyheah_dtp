@@ -1,6 +1,5 @@
 <script>
 	import Table from '../../lib/Table.svelte'
-	export let data../postgres/$types.js
   </script>
   
   <main
