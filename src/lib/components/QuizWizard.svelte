@@ -1,64 +1,15 @@
 <script>
 	import QuizBadge from './QuizBadge.svelte';
 
+	export let quizQuestions;
+	export let politicalParties;
+	
 	export let questionIndex = 0;
 	export let quizQuestion;
 	export let quizResult = false;
 
-	const politicalParties = [
-		{ id: 1, name: 'political party #1' },
-		{ id: 2, name: 'political party #2' },
-		{ id: 3, name: 'political party #3' },
-		{ id: 4, name: 'political party #4' },
-		{ id: 5, name: 'political party #5' },
-		{ id: 6, name: 'political party #6' },
-		{ id: 7, name: 'political party #7' },
-		{ id: 8, name: 'political party #8' }
-	];
-
 	const partiesResultsArray = [];
 	const resultsArray = [];
-	const quizQuestions = [];
-	quizQuestions.push({
-		id: 1,
-		text: 'Oppression by corporations is more of a concern than oppression by governments.'
-	});
-	quizQuestions.push({
-		id: 2,
-		text: 'It is necessary for the government to intervene in the economy to protect consumers.'
-	});
-	quizQuestions.push({
-		id: 3,
-		text: 'The freer the markets, the freer the people.'
-	});
-	quizQuestions.push({
-		id: 4,
-		text: 'It is better to maintain a balanced budget than to ensure welfare for all citizens.'
-	});
-	quizQuestions.push({
-		id: 5,
-		text: 'Publicly-funded research is more beneficial to the people than leaving it to the market.'
-	});
-	quizQuestions.push({
-		id: 6,
-		text: 'Tariffs on international trade are important to encourage local production.'
-	});
-	quizQuestions.push({
-		id: 7,
-		text: 'From each according to his ability, to each according to his needs.'
-	});
-	quizQuestions.push({
-		id: 8,
-		text: 'It would be best if social programs were abolished in favor of private charity.'
-	});
-	quizQuestions.push({
-		id: 9,
-		text: 'Taxes should be increased on the rich to provide for the poor.'
-	});
-	quizQuestions.push({
-		id: 10,
-		text: 'Tariffs on international trade are important to encourage local production.'
-	});
 
 	function askAQuestion() {
 		quizQuestion = quizQuestions[questionIndex];
