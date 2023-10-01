@@ -12,12 +12,17 @@
     "format": "prettier --plugin-search-dir . --write ."
   },
   "devDependencies": {
+    "@event-calendar/core": "^2.3.3",
+    "@event-calendar/day-grid": "^2.3.3",
+    "@event-calendar/time-grid": "^2.3.3",
     "@fontsource/fira-mono": "^4.5.10",
     "@neoconfetti/svelte": "^1.0.0",
     "@popperjs/core": "^2.11.8",
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/kit": "^1.20.4",
     "@types/cookie": "^0.5.1",
+    "@types/sequelize": "^4.28.16",
+    "@types/umzug": "^2.3.4",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "bootstrap": "^5.3.0",
@@ -27,6 +32,7 @@
     "prettier": "^2.8.0",
     "prettier-plugin-svelte": "^2.10.1",
     "sass": "^1.68.0",
+    "sequelize-cli": "^6.6.1",
     "svelte": "^4.0.5",
     "svelte-check": "^3.4.3",
     "tslib": "^2.4.1",
@@ -39,7 +45,13 @@
     "@maptiler/sdk": "^1.1.2",
     "@vercel/blob": "^0.13.0",
     "@vercel/postgres": "^0.5.0",
+    "buffer": "^6.0.3",
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.33.0",
     "svelte-local-storage-store": "^0.6.0",
+    "svelte-table": "^0.6.1",
     "uuid": "^9.0.1"
   }
 }

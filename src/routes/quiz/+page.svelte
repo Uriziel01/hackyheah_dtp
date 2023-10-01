@@ -1,6 +1,7 @@
 <script>
-	import expense_map from '$lib/images/expense_map.png';
-	import income_map from '$lib/images/income_map.png';
+	import QuizWizard from "$lib/components/QuizWizard.svelte";
 </script>
 
-<h2>Quiz</h2>
+<h1>Quiz helper panel</h1>
+
+<QuizWizard />

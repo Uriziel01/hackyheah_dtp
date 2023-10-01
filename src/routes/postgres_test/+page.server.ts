@@ -1,8 +1,13 @@
 import { createPool } from '@vercel/postgres';
 import { sql } from '@vercel/postgres';
 
-async function seed(db: any) {
-	const createTableUsers = await sql`
+async function seed() {
+	await sql`DROP TABLE IF EXISTS tags`;
+	await sql`DROP TABLE IF EXISTS users`;
+	await sql`DROP TABLE IF EXISTS articles`;
+	await sql`DROP TABLE IF EXISTS questions`;
+
+	const createTables = await sql`
     CREATE TABLE IF NOT EXISTS users (
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
@@ -11,26 +16,32 @@ async function seed(db: any) {
       "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
     );
     `;
-	const createTableArticles = await sql`
+	await sql`
 	CREATE TABLE IF NOT EXISTS articles (
 		id SERIAL PRIMARY KEY,
 		title VARCHAR(255) NOT NULL,
 		content TEXT,
 		date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 		tags JSON
-	  );`;
-	const createTableTags = await sql`
-	  CREATE TABLE IF NOT EXISTS tags (
+	);`;
+	await sql`
+	CREATE TABLE IF NOT EXISTS tags (
 		id SERIAL PRIMARY KEY,
 		name VARCHAR(255) NOT NULL,
 		icon VARCHAR(255) NOT NULL
-	  );`;
-	console.log(`Created "users, articles, tags" table`);
-	// if exists -> bool false run script users
-
-	await sql`TRUNCATE TABLE users`;
-	await sql`TRUNCATE TABLE articles`;
-	await sql`TRUNCATE TABLE tags`;
+	);`;
+	await sql`	
+	CREATE TABLE IF NOT EXISTS questions (
+		id SERIAL PRIMARY KEY,
+		text VARCHAR(255) NOT NULL
+	);`;  
+	await sql`
+	CREATE TABLE IF NOT EXISTS parties (
+		id SERIAL PRIMARY KEY,
+		name VARCHAR(255) NOT NULL,
+		logo VARCHAR(255) NOT NULL
+	);`;
+	console.log(`Created "users, articles, tags, questions, parties" table`);
 
 	const users = await Promise.all([
 		sql`
@@ -58,18 +69,12 @@ async function seed(db: any) {
 	]);
 	console.log(`Added articles`);
 
-	const { rows: tags } = await db.query('SELECT * FROM tags');
-	console.log(`tags:${JSON.stringify(tags)}`)
-
-	const womenTags = tags.filter(row => row.name === 'women');
-	const pollTags = tags.filter(row => row.name === 'poll');
-
 	 console.log('test2222');
 	const articles = await Promise.all([
 		sql`INSERT INTO articles (title, content, tags)
         VALUES($$Without women, you won't win these elections$$, $$On Thursday, a new podcast hosted by Arleta Zalewska from 'Fakty' TVN and Aleksandra Pawlicka from 'Newsweek' premiered, titled 'Women's Choices.'
          The next day, on TVN24, the journalists talked about their new project and also commented on the ongoing election campaign. - Women have finally been noticed - Pawlicka noted. - I have no doubt: without women, you won't win these elections - emphasized Zalewska.$$,
-         '[1,2,3]')
+         '[1]')
          `,
 		sql`INSERT INTO articles (title, content, tags)
         VALUES($$Latest Election Polls - Who Will Be the Third Force in the Parliament?$$,
@@ -80,8 +85,68 @@ async function seed(db: any) {
 	]);
 	console.log(`Added ${articles.length} articles`);
 
+	const questions = await Promise.all([
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('Oppression by corporations is more of a concern than oppression by governments.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('It is necessary for the government to intervene in the economy to protect consumers.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('The freer the markets, the freer the people.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('It is better to maintain a balanced budget than to ensure welfare for all citizens.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('Publicly-funded research is more beneficial to the people than leaving it to the market.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('Tariffs on international trade are important to encourage local production.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('From each according to his ability, to each according to his needs.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('It would be best if social programs were abolished in favor of private charity.');
+		  `,
+		sql`
+			  INSERT INTO questions (text)
+			  VALUES ('Taxes should be increased on the rich to provide for the poor.');
+		  `,
+	  ]);
+	  console.log(`Added ${questions.length} questions`);
+
+	  const parties = await Promise.all([
+		sql`
+			INSERT INTO parties (name, logo)
+			VALUES ('Pizza Friends', '$lib/images/logo1.jpg');
+		  `,
+		sql`
+			INSERT INTO parties (name, logo)
+			VALUES ('Promise And Conquer', '$lib/images/logo2.jpg');
+		  `,
+		sql`
+			INSERT INTO parties (name, logo)
+			VALUES ('Do Whatever You Want', '$lib/images/logo3.jpg');
+		  `,
+		sql`
+			INSERT INTO parties (name, logo)
+			VALUES ('We Are The Champions', '$lib/images/logo4.jpg');
+		  `,
+		]);
+		console.log(`Added ${parties.length} parties`);
+
 	return {
-		createTableUsers
+		createTables
 	};
 }
 
@@ -90,7 +155,7 @@ export async function load() {
 	const startTime = Date.now();
 
 	try {
-		await seed(db);
+		await seed();
 		const { rows: users } = await db.query('SELECT * FROM users');
 		
 		const duration = Date.now() - startTime;
