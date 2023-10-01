@@ -21,4 +21,5 @@ HACKYEAH 2023
 
 1. cd hackyeah_dtp
 2. npm install (or pnpm install, etc)
-3. npm run dev -- --open
+3. node ./src/runMigrations.cjs
+4. npm run dev -- --open
