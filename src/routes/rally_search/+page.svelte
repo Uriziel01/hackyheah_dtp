@@ -2,25 +2,16 @@
 	import SvelteTable from 'svelte-table';
 
 	const rows = [
-		{ party: 'political party #1', city: 'Zielona Góra', voivodeship: 'lubuskie' },
-		{ party: 'political party #2', city: 'Gorzów Wlkp.', voivodeship: 'lubuskie' },
-		{ party: 'political party #3', city: 'Wrocław', voivodeship: 'dolnośląskie' },
-		{ party: 'political party #4', city: 'Gorzów Wlkp.', voivodeship: 'lubuskie' },
-		{ party: 'political party #5', city: 'Gorzów Wlkp.', voivodeship: 'lubuskie' },
-		{ party: 'political party #6', city: 'Wrocław', voivodeship: 'dolnośląskie' },
-		{ party: 'political party #7', city: 'Wrocław', voivodeship: 'dolnośląskie' },
-		{ party: 'political party #8', city: 'Warszawa', voivodeship: 'mazowieckie' },
-		{ party: 'political party #9', city: 'Wrocław', voivodeship: 'dolnośląskie' },
-		{ party: 'political party #1', city: 'Zielona Góra', voivodeship: 'lubuskie' },
-		{ party: 'political party #2', city: 'Warszawa', voivodeship: 'mazowieckie' },
-		{ party: 'political party #3', city: 'Warszawa', voivodeship: 'mazowieckie' },
-		{ party: 'political party #4', city: 'Gubin', voivodeship: 'lubuskie' },
-		{ party: 'political party #5', city: 'Zielona Góra', voivodeship: 'lubuskie' },
-		{ party: 'political party #6', city: 'Gubin', voivodeship: 'lubuskie' },
-		{ party: 'political party #7', city: 'Zielona Góra', voivodeship: 'lubuskie' },
-		{ party: 'political party #8', city: 'Gdańsk', voivodeship: 'pomorskie' },
-		{ party: 'political party #1', city: 'Zielona Góra', voivodeship: 'lubuskie' },
-		{ party: 'political party #2', city: 'Gdańsk', voivodeship: 'pomorskie' }
+		{ party: 'Pizza Friends', city: 'Zielona Góra', voivodeship: 'lubuskie' },
+		{ party: 'Promise And Conquer', city: 'Gorzów Wlkp.', voivodeship: 'lubuskie' },
+		{ party: 'Do Whatever You Want', city: 'Wrocław', voivodeship: 'dolnośląskie' },
+		{ party: 'We Are The Champions', city: 'Gorzów Wlkp.', voivodeship: 'lubuskie' },
+		{ party: 'Pizza Friends', city: 'Zielona Góra', voivodeship: 'lubuskie' },
+		{ party: 'Promise And Conquer', city: 'Warszawa', voivodeship: 'mazowieckie' },
+		{ party: 'Do Whatever You Want', city: 'Warszawa', voivodeship: 'mazowieckie' },
+		{ party: 'We Are The Champions', city: 'Gubin', voivodeship: 'lubuskie' },
+		{ party: 'Pizza Friends', city: 'Zielona Góra', voivodeship: 'lubuskie' },
+		{ party: 'Promise And Conquer', city: 'Gdańsk', voivodeship: 'pomorskie' }
 	];
 
 	const columns = [
@@ -31,15 +22,10 @@
 			renderValue: (v) => v.party,
 			sortable: true,
 			filterOptions: [
-				'political party #1',
-				'political party #2',
-				'political party #3',
-				'political party #4',
-				'political party #5',
-				'political party #6',
-				'political party #7',
-				'political party #8',
-				'political party #9'
+				'Pizza Friends',
+				'Promise And Conquer',
+				'Do Whatever You Want',
+				'We Are The Champions',
 			]
 		},
 		{
