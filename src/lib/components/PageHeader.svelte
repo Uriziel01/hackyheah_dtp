@@ -21,7 +21,6 @@
         background-color: #1d3162;
         mix-blend-mode: lighten;
     }
-    
 </style>
 <div class="column red-purple m-0 p-0" style="min-height:50vh">
     <div class="color-dodge m-0 p-0 h-100" style="background-size:cover;background-image:url({imageUrl})"></div>
