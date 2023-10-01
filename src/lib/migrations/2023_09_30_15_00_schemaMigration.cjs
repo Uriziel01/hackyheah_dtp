@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 // @ts-ignore
 exports.up = async (queryInterface, Sequelize) => {
-  await queryInterface.createTable("tags2", {
+  await queryInterface.createTable("tags", {
     id: {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -21,7 +21,7 @@ exports.up = async (queryInterface, Sequelize) => {
     }
   });
 
-  await queryInterface.createTable("users2", {
+  await queryInterface.createTable("users", {
     id: {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -50,7 +50,7 @@ exports.up = async (queryInterface, Sequelize) => {
     }
   });
 
-  await queryInterface.createTable("articles2", {
+  await queryInterface.createTable("articles", {
     id: {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -75,7 +75,7 @@ exports.up = async (queryInterface, Sequelize) => {
     }
   });
 
-  await queryInterface.createTable("questions2", {
+  await queryInterface.createTable("questions", {
     id: {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -89,7 +89,7 @@ exports.up = async (queryInterface, Sequelize) => {
     }
   });
 
-  await queryInterface.createTable("parties2", {
+  await queryInterface.createTable("parties", {
     id: {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -110,9 +110,9 @@ exports.up = async (queryInterface, Sequelize) => {
 };
 
 exports.down = async (queryInterface, _) => {
-  await queryInterface.dropTable("tags2");
-  await queryInterface.dropTable("users2");
-  await queryInterface.dropTable("articles2");
-  await queryInterface.dropTable("questions2");
-  await queryInterface.dropTable("parties2");
+  await queryInterface.dropTable("tags");
+  await queryInterface.dropTable("users");
+  await queryInterface.dropTable("articles");
+  await queryInterface.dropTable("questions");
+  await queryInterface.dropTable("parties");
 };
