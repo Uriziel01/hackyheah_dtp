@@ -43,6 +43,7 @@
     "@vercel/blob": "^0.13.0",
     "@vercel/postgres": "^0.5.0",
     "svelte-local-storage-store": "^0.6.0",
+    "svelte-table": "^0.6.1",
     "uuid": "^9.0.1"
   }
 }
