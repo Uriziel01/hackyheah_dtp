@@ -2,9 +2,9 @@
 <script>
     import Avatar from "./Avatar.svelte"
 
-    export let imageUrl = 'http://placekitten.com/g/200/300';
+    export let imageUrl;
     export let title = 'Card Title';
-    export let description = 'This is some content inside the card';
+    export let description;
 
     const colors = [
         '#9d789b',
@@ -28,7 +28,7 @@
   let backgroundColor = getRandomBackgroundColor();
 </script>
 
-<div class="card testimonial-card">
+<div class="card text-white bg-primary testimonial-card">
     {#if imageUrl}
         <div class="card-up" style="background-color: {backgroundColor};"></div>
         <div class="avatar mx-auto bg-white">
