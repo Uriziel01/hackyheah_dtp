@@ -21,23 +21,43 @@
 	const quizQuestions = [];
 	quizQuestions.push({
 		id: 1,
-		text: 'Some question no 1 ?'
+		text: 'Oppression by corporations is more of a concern than oppression by governments.'
 	});
 	quizQuestions.push({
 		id: 2,
-		text: 'Some question no 2 ?'
+		text: 'It is necessary for the government to intervene in the economy to protect consumers.'
 	});
 	quizQuestions.push({
 		id: 3,
-		text: 'Some question no 3 ?'
+		text: 'The freer the markets, the freer the people.'
 	});
 	quizQuestions.push({
 		id: 4,
-		text: 'Some question no 4 ?'
+		text: 'It is better to maintain a balanced budget than to ensure welfare for all citizens.'
 	});
 	quizQuestions.push({
 		id: 5,
-		text: 'Some question no 5 ?'
+		text: 'Publicly-funded research is more beneficial to the people than leaving it to the market.'
+	});
+	quizQuestions.push({
+		id: 6,
+		text: 'Tariffs on international trade are important to encourage local production.'
+	});
+	quizQuestions.push({
+		id: 7,
+		text: 'From each according to his ability, to each according to his needs.'
+	});
+	quizQuestions.push({
+		id: 8,
+		text: 'It would be best if social programs were abolished in favor of private charity.'
+	});
+	quizQuestions.push({
+		id: 9,
+		text: 'Taxes should be increased on the rich to provide for the poor.'
+	});
+	quizQuestions.push({
+		id: 10,
+		text: 'Tariffs on international trade are important to encourage local production.'
 	});
 
 	function askAQuestion() {
