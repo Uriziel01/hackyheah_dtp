@@ -22,7 +22,7 @@
         mix-blend-mode: lighten;
     }
 </style>
-<div class="column red-purple m-0 p-0">
+<div class="column red-purple m-0 p-0" style="min-height:50vh">
     <div class="color-dodge m-0 p-0 h-100" style="background-size:cover;background-image:url({imageUrl})"></div>
     {#if title}
     <span class="display-1 text-white">{title}</span>
