@@ -13,7 +13,7 @@
 				allDay: false,
 				start: new Date(2023, 8, 23, 15, 0, 0),
 				end: new Date(2023, 8, 23, 20, 0, 0),
-				title: 'political party #1 - event title',
+				title: 'Pizza Friends Party - family picnic',
 				editable: false,
 				display: 'auto'
 			},
@@ -22,7 +22,16 @@
 				allDay: false,
 				start: new Date(2023, 9, 14, 15, 0, 0),
 				end: new Date(2023, 9, 14, 20, 0, 0),
-				title: 'political party #2 - event title',
+				title: 'Do Whatever You Want - free beer',
+				editable: false,
+				display: 'auto'
+			},
+			{
+				id: 'id3',
+				allDay: false,
+				start: new Date(2023, 10, 1, 15, 0, 0),
+				end: new Date(2023, 10, 1, 20, 0, 0),
+				title: 'We Are The Champions - HackYeah',
 				editable: false,
 				display: 'auto'
 			}
