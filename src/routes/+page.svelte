@@ -6,8 +6,8 @@
   
   <main class="container-fluid">
 	<div class="row text-center">
-		<PageHeader title="test123"/>
-		<div class="col">
+		<PageHeader/>
+		<div class="col" style="margin-top: -100px;">
 			<span class="h1">LEMUR VOTE</span>
 			<div>We empower the youth to make decisions and take actions</div>
 		</div>
@@ -15,13 +15,15 @@
 	{#if !$appstate.is_candidate && !$appstate.is_voter}
 		<div class="row">
 			<div class="col-md-6 text-center">
-				<div role="button" tabindex="0" class="card mb-4 box-shadow h-100"
+				<div role="button" tabindex="0" class="card mb-4 box-shadow h-100 pt-3 mt-3"
+				style="background-color: rgba(255,255,255,0.1);"
 				on:click={() => $appstate.is_voter = true}>
 					<h1>I'm a voter</h1>
 				</div>
 			</div>
 			<div class="col-md-6 text-center">
-				<div role="button" tabindex="0" class="card mb-4 box-shadow h-100"
+				<div role="button" tabindex="0" class="card mb-4 box-shadow h-100 pt-3 mt-3"
+				style="background-color: rgba(255,255,255,0.1);"
 				on:click={() => $appstate.is_candidate = true}>
 					<h1>I'm a candidate</h1>
 				</div>
