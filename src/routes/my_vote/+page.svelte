@@ -3,4 +3,8 @@
 	import income_map from '$lib/images/income_map.png';
 </script>
 
-<h2>My Voter Panel</h2>
+
+<div class="text-center">
+	<h2>My Voter Panel</h2>
+	<img src="mobywatel.jpg" class="img-fluid rounded">
+</div>
