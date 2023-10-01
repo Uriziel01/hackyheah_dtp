@@ -6,7 +6,7 @@
   
   <main class="container-fluid">
 	<div class="row text-center">
-		<PageHeader />
+		<PageHeader title="test123"/>
 		<div class="col">
 			<span class="h1">LEMUR VOTE</span>
 			<div>We empower the youth to make decisions and take actions</div>

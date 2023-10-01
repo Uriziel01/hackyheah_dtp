@@ -3,7 +3,7 @@
 	import { appstate } from '../state.ts'
 	import { get } from 'svelte/store'
 	import { page } from '$app/stores';
-	console.log({ page });
+
 	onMount(() => {
 			var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
 			var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
