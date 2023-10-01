@@ -35,6 +35,14 @@
 			</li>
 			<li class="nav-item">
 				<!-- svelte-ignore a11y-invalid-attribute -->
+				<a class="nav-link no-outline text-white" href="/maps" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Maps"><i class="fa-solid fa-location-dot"></i><span class="d-sm-inline d-md-none m-1">Maps</span></a>
+			</li>
+			<li class="nav-item">
+				<!-- svelte-ignore a11y-invalid-attribute -->
+				<a class="nav-link no-outline text-white" href="/calendar" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Calendar"><i class="fa-regular fa-calendar"></i><span class="d-sm-inline d-md-none m-1">Calendar</span></a>
+			</li>
+			<li class="nav-item">
+				<!-- svelte-ignore a11y-invalid-attribute -->
 				<a class="nav-link no-outline text-white" href="/quiz" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Quiz"><i class="fa-solid fa-question"></i><span class="d-sm-inline d-md-none m-1">Quiz</span></a>
 			</li>
 			<li class="nav-item">
@@ -47,7 +55,7 @@
 			</li>
 			<li class="nav-item">
 				<!-- svelte-ignore a11y-invalid-attribute -->
-				<a class="nav-link no-outline text-white" href="/my_vote" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Rally"><i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i><span class="d-sm-inline d-md-none m-1">Rally finder</span></a>
+				<a class="nav-link no-outline text-white" href="/rally_search" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Rally finder"><i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i><span class="d-sm-inline d-md-none m-1">Rally finder</span></a>
 			</li>
 			<li class="nav-item dropdown">
 				<!-- svelte-ignore a11y-invalid-attribute -->
