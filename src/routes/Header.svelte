@@ -39,6 +39,10 @@
 			  <!-- svelte-ignore a11y-invalid-attribute -->
 			  <a class="nav-link {activeLink === 'voter_helper' ? 'active' : ''} no-outline text-white" on:click={() => setActive('voter_helper')} href="/voter_helper">Candidates</a>
 			</li>
+			<li class="nav-item">
+			  <!-- svelte-ignore a11y-invalid-attribute -->
+			  <a class="nav-link {activeLink === 'rally_search' ? 'active' : ''} no-outline text-white" on:click={() => setActive('rally_search')} href="/rally_search">Rally search</a>
+			</li>
     	    <li class="nav-item dropdown">
 			  	<!-- svelte-ignore a11y-invalid-attribute -->
 				  <a class="nav-link dropdown-toggle {activeLink === 'electoral' ? 'active' : ''} text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" on:click={() => setActive('electoral')}>
