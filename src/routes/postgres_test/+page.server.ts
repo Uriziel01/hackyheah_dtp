@@ -6,6 +6,7 @@ async function seed() {
 	await sql`DROP TABLE IF EXISTS users`;
 	await sql`DROP TABLE IF EXISTS articles`;
 	await sql`DROP TABLE IF EXISTS questions`;
+	await sql`DROP TABLE IF EXISTS parties`;
 
 	const createTables = await sql`
     CREATE TABLE IF NOT EXISTS users (
